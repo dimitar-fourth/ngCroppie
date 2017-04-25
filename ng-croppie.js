@@ -1,13 +1,13 @@
 /*!
- *	 Angular Croppie Tool (ngCroppie)
- *	 An awesome image cropping and rotating module for AngularJS.
+ *     Angular Croppie Tool (ngCroppie)
+ *     An awesome image cropping and rotating module for AngularJS.
  *
  *   Credits: https://github.com/allenRoyston/ngCroppie/graphs/contributors
- *	 Inspired by Croppie.js people
- *	 https://github.com/Foliotek/Croppie
+ *     Inspired by Croppie.js people
+ *     https://github.com/Foliotek/Croppie
  *
- *	 Version: 1.0.1
- * 	 License: MIT
+ *     Version: 1.0.1
+ *      License: MIT
  */
 (function () {
     'use strict';
@@ -85,6 +85,14 @@
 
                 if (scope.update != undefined) {
                     options.update = scope.update;
+                } else {
+                    options.update = function () {
+                        c.result('canvas').then(function(img) {
+                            scope.$apply(function () {
+                                scope.ngModel = img;
+                            });
+                        });
+                    }
                 }
 
                 // create new croppie and settime for updates
