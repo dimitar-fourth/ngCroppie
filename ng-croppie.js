@@ -160,11 +160,7 @@
                 scope.$watch('src', function(newValue, oldValue) {
                     if (scope.src != undefined) {
                         c.bind(scope.src);
-                        c.result('canvas').then(function(img) {
-                            scope.$apply(function () {
-                                scope.ngModel = img;
-                            });
-                        });
+                        scope.ngModel = newValue;
                     }
                 });
             }
